@@ -1,6 +1,6 @@
 {
   "name": "dom-kit",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Work in progress...",
   "main": "lib/dom.js",
   "directories": {
