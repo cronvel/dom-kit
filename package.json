@@ -1,12 +1,14 @@
 {
   "name": "dom-kit",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A small DOM toolkit.",
   "main": "lib/dom.js",
   "directories": {
     "test": "test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@cronvel/xmldom": "^0.1.28"
+  },
   "devDependencies": {
     "expect.js": "^0.3.1",
     "jshint": "^2.5.6",
