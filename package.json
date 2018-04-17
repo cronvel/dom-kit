@@ -1,6 +1,6 @@
 {
   "name": "dom-kit",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "A small DOM toolkit.",
   "main": "lib/dom.js",
   "directories": {
@@ -28,5 +28,13 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cronvel/dom-kit/issues"
+  },
+  "copyright": {
+    "title": "Dom Kit",
+    "years": [
+      2015,
+      2018
+    ],
+    "owner": "Cédric Ronvel"
   }
 }
