@@ -24,13 +24,9 @@
 	SOFTWARE.
 */
 
-/* jshint unused:false */
-/* global describe, it, before, after */
-
 
 
 var dom = require( '../lib/dom.js' ) ;
-var expect = require( 'expect.js' ) ;
 
 
 

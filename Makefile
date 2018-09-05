@@ -31,16 +31,27 @@ publish: log/npm-publish.log log/github-push.log
 # Clean temporary things, or things that can be automatically regenerated
 clean: clean-all
 
+# browserify
+browser: browser/SacredTimes.js browser/SacredTimes.min.js
+
 
 
 # Variables
 
 MOCHA=../node_modules/mocha/bin/mocha
 JSHINT=./node_modules/jshint/bin/jshint --verbose
+BROWSERIFY=browserify
+UGLIFY=uglifyjs
 
 
 
 # Files rules
+
+browser/SacredTimes.js: lib/dom.js
+	${BROWSERIFY} lib/dom.js -s domKit -o browser/dom.js
+
+browser/SacredTimes.min.js: browser/dom.js
+	${UGLIFY} browser/dom.js -o browser/dom.min.js -m
 
 # JsHint STDOUT test
 log/jshint.log: log/npm-dev-install.log lib/*.js test/*.js

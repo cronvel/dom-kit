@@ -1,6 +1,6 @@
 {
   "name": "dom-kit",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "description": "A small DOM toolkit.",
   "main": "lib/dom.js",
   "directories": {
@@ -9,13 +9,9 @@
   "dependencies": {
     "@cronvel/xmldom": "^0.1.30"
   },
-  "devDependencies": {
-    "expect.js": "^0.3.1",
-    "jshint": "^2.5.6",
-    "mocha": "^2.4.5"
-  },
+  "devDependencies": {},
   "scripts": {
-    "test": "mocha -R dot"
+    "test": "tea-time -R dot"
   },
   "repository": {
     "type": "git",
