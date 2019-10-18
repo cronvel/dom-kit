@@ -13,11 +13,8 @@ install: log/npm-install.log
 # Just install things so it works, basicaly: it just performs a "npm install" ATM
 dev-install: log/npm-dev-install.log
 
-# This run the JsHint & Mocha BDD test, display it to STDOUT & save it to log/mocha.log and log/jshint.log
-test: log/jshint.log log/mocha.log
-
-# This run the JsHint, display it to STDOUT & save it to log/jshint.log
-lint: log/jshint.log
+# This run the Mocha BDD test, display it to STDOUT & save it to log/mocha.log
+test: log/mocha.log
 
 # This run the Mocha BDD test, display it to STDOUT & save it to log/mocha.log
 unit: log/mocha.log
@@ -32,14 +29,16 @@ publish: log/npm-publish.log log/github-push.log
 clean: clean-all
 
 # browserify
-browser: browser/SacredTimes.js browser/SacredTimes.min.js
+browser: browser/dom.js browser/dom.min.js
+
+# Build
+build: browser
 
 
 
 # Variables
 
 MOCHA=../node_modules/mocha/bin/mocha
-JSHINT=./node_modules/jshint/bin/jshint --verbose
 BROWSERIFY=browserify
 UGLIFY=uglifyjs
 
@@ -47,15 +46,11 @@ UGLIFY=uglifyjs
 
 # Files rules
 
-browser/SacredTimes.js: lib/dom.js
+browser/dom.js: lib/dom.js
 	${BROWSERIFY} lib/dom.js -s domKit -o browser/dom.js
 
-browser/SacredTimes.min.js: browser/dom.js
+browser/dom.min.js: browser/dom.js
 	${UGLIFY} browser/dom.js -o browser/dom.min.js -m
-
-# JsHint STDOUT test
-log/jshint.log: log/npm-dev-install.log lib/*.js test/*.js
-	${JSHINT} lib/*.js test/*.js | tee log/jshint.log ; exit $${PIPESTATUS[0]}
 
 # Mocha BDD STDOUT test
 log/mocha.log: log/npm-dev-install.log lib/*.js test/*.js
