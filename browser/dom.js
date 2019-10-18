@@ -538,13 +538,25 @@ domKit.stringifyTransform = function( object ) {
 	if ( object.translateX ) { str.push( 'translateX(' + object.translateX + 'px)' ) ; }
 	if ( object.translateY ) { str.push( 'translateY(' + object.translateY + 'px)' ) ; }
 	if ( object.translateZ ) { str.push( 'translateZ(' + object.translateZ + 'px)' ) ; }
-	if ( object.rotate ) { str.push( 'rotate(' + object.rotate + 'deg)' ) ; }
-	if ( object.rotateX ) { str.push( 'rotateX(' + object.rotateX + 'deg)' ) ; }
-	if ( object.rotateY ) { str.push( 'rotateY(' + object.rotateY + 'deg)' ) ; }
-	if ( object.rotateZ ) { str.push( 'rotateZ(' + object.rotateZ + 'deg)' ) ; }
-	if ( object.scaleX ) { str.push( 'scaleX(' + object.scaleX + ')' ) ; }
-	if ( object.scaleY ) { str.push( 'scaleY(' + object.scaleY + ')' ) ; }
-	if ( object.scaleZ ) { str.push( 'scaleZ(' + object.scaleZ + ')' ) ; }
+
+	if ( object.rotate ) {
+		str.push( 'rotate(' + object.rotate + 'deg)' ) ;
+	}
+	else {
+		if ( object.rotateX ) { str.push( 'rotateX(' + object.rotateX + 'deg)' ) ; }
+		if ( object.rotateY ) { str.push( 'rotateY(' + object.rotateY + 'deg)' ) ; }
+		if ( object.rotateZ ) { str.push( 'rotateZ(' + object.rotateZ + 'deg)' ) ; }
+	}
+
+	if ( object.scale ) {
+		str.push( 'scale(' + object.scale + ')' ) ;
+	}
+	else {
+		if ( object.scaleX ) { str.push( 'scaleX(' + object.scaleX + ')' ) ; }
+		if ( object.scaleY ) { str.push( 'scaleY(' + object.scaleY + ')' ) ; }
+		if ( object.scaleZ ) { str.push( 'scaleZ(' + object.scaleZ + ')' ) ; }
+	}
+
 	if ( object.skewX ) { str.push( 'skewX(' + object.skewX + 'deg)' ) ; }
 	if ( object.skewY ) { str.push( 'skewY(' + object.skewY + 'deg)' ) ; }
 
