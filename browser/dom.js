@@ -530,8 +530,19 @@ domKit.decomposeMatrix3d = matrix => {
 
 
 
+const AXIS_TO_ROT = {
+	x: 'rotateX' ,
+	X: 'rotateX' ,
+	y: 'rotateY' ,
+	Y: 'rotateY' ,
+	z: 'rotateZ' ,
+	Z: 'rotateZ'
+} ;
+
+
+
 domKit.stringifyTransform = object => {
-	var str = [] ;
+	var str = [] , eulerOrder , i , rot ;
 
 	if ( object.translateX ) { str.push( 'translateX(' + object.translateX + 'px)' ) ; }
 	if ( object.translateY ) { str.push( 'translateY(' + object.translateY + 'px)' ) ; }
@@ -541,9 +552,11 @@ domKit.stringifyTransform = object => {
 		str.push( 'rotate(' + object.rotate + 'deg)' ) ;
 	}
 	else {
-		if ( object.rotateX ) { str.push( 'rotateX(' + object.rotateX + 'deg)' ) ; }
-		if ( object.rotateY ) { str.push( 'rotateY(' + object.rotateY + 'deg)' ) ; }
-		if ( object.rotateZ ) { str.push( 'rotateZ(' + object.rotateZ + 'deg)' ) ; }
+		eulerOrder = object.eulerOrder || 'zyx' ;
+		for ( i = 0 ; i < 3 ; i ++ ) {
+			rot = AXIS_TO_ROT[ eulerOrder[ i ] ] ;
+			if ( object[ rot ] ) { str.push( rot + '(' + object[ rot ] + 'deg)' ) ; }
+		}
 	}
 
 	if ( object.scale ) {
