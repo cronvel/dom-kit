@@ -29,7 +29,7 @@ publish: log/npm-publish.log log/github-push.log
 clean: clean-all
 
 # browserify
-browser: browser/dom.js browser/dom.min.js
+browser: browser/dom-kit.js browser/dom-kit.min.js
 
 # Build
 build: browser
@@ -46,11 +46,11 @@ UGLIFY=uglifyjs
 
 # Files rules
 
-browser/dom.js: lib/dom.js
-	${BROWSERIFY} lib/dom.js -s domKit -o browser/dom.js
+browser/dom-kit.js: lib/dom.js
+	${BROWSERIFY} lib/dom.js -s domKit -o browser/dom-kit.js
 
-browser/dom.min.js: browser/dom.js
-	${UGLIFY} browser/dom.js -o browser/dom.min.js -m
+browser/dom-kit.min.js: browser/dom-kit.js
+	${UGLIFY} browser/dom-kit.js -o browser/dom-kit.min.js -m
 
 # Mocha BDD STDOUT test
 log/mocha.log: log/npm-dev-install.log lib/*.js test/*.js
